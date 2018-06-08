@@ -1,10 +1,11 @@
 {
   "name": "@tacitknowledge/react-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A set of utilities for React projects.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "npm run test && tsc",
+    "test": "NODE_ENV=development nyc ./node_modules/mocha/bin/mocha -r ts-node/register src/__tests__/**/*.test.ts"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,24 @@
   "bugs": {
     "url": "https://github.com/abalmus/react-utils/issues"
   },
-  "homepage": "https://github.com/abalmus/react-utils#readme"
+  "homepage": "https://github.com/abalmus/react-utils#readme",
+  "dependencies": {
+    "@types/classnames": "^2.2.3",
+    "@types/node": "^8.0.41",
+    "@types/react": "^16.0.10",
+    "classnames": "^2.2.5",
+    "nyc": "^12.0.2"
+  },
+  "devDependencies": {
+    "in-publish": "^2.0.0",
+    "mocha": "^5.2.0",
+    "npm-run-all": "^4.1.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "rimraf": "^2.6.2",
+    "ts-node": "^6.1.0",
+    "tslint": "5.7.0",
+    "tslint-config-shopify": "^3.0.1",
+    "typescript": "^2.5.3"
+  }
 }

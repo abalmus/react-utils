@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "jsx": "preserve",
+        "module": "commonjs",
+        "target": "es5",
+        "lib": [
+            "es2016",
+            "dom"
+        ],
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "experimentalDecorators": true,
+        "outDir": "./lib",
+        "rootDir": "./src"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
