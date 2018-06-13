@@ -22,9 +22,11 @@ export function getDisplayName(Component: ReactComponent<any>) {
     );
 }
 
-/// Wraps `element` in `Component`, if it is not already an instance of
-/// `Component`. If `props` is passed, those will be added as props on the
-/// wrapped component. If `element` is null, the component is not wrapped.
+/*
+* Wraps `element` in `Component`, if it is not already an instance of
+* `Component`. If `props` is passed, those will be added as props on the
+* wrapped component. If `element` is null, the component is not wrapped.
+*/
 export function wrapWithComponent<P>(
     element: React.ReactNode | null | undefined,
     Component: ReactComponent<P>,
@@ -55,9 +57,11 @@ function hotReloadComponentCheck(
     );
 }
 
-/// In development, we compare based on the name of the function because
-/// React Hot Loader proxies React components in order to make updates. In
-/// production we can simply compare the components for equality.
+/*
+* In development, we compare based on the name of the function because
+* React Hot Loader proxies React components in order to make updates. In
+* production we can simply compare the components for equality.
+*/
 const isComponent =
     process.env.NODE_ENV === 'development'
         ? hotReloadComponentCheck
@@ -66,8 +70,10 @@ const isComponent =
             AnotherComponent: ReactComponent<any>
         ) => AComponent === AnotherComponent;
 
-/// Checks whether `element` is a React element of type `Component` (or one of
-/// the passed components, if `Component` is an array of React components).
+/*
+* Checks whether `element` is a React element of type `Component` (or one of
+* the passed components, if `Component` is an array of React components).
+*/
 export function isElementOfType(
     element: React.ReactNode | null | undefined,
     Component: ReactComponent<{}> | ReactComponent<{}>[]
@@ -88,8 +94,10 @@ export function isElementOfType(
     );
 }
 
-/// Returns all children that are valid elements as an array. Can optionally be
-/// filtered by passing `predicate`.
+/*
+* Returns all children that are valid elements as an array. Can optionally be
+* filtered by passing `predicate`.
+*/
 export function elementChildren<T extends React.ReactElement<{}>>(
     children: React.ReactNode,
     predicate: ((element: T) => boolean) = () => true
@@ -99,9 +107,11 @@ export function elementChildren<T extends React.ReactElement<{}>>(
     ) as T[];
 }
 
-/// Adds the `methods` to the prototype of `Component`, with any existing
-/// methods of the same name still being called *after* they version supplied
-/// by `methods`. Returns the newly-augmented class.
+/*
+* Adds the `methods` to the prototype of `Component`, with any existing
+* methods of the same name still being called *after* they version supplied
+* by `methods`. Returns the newly-augmented class.
+*/
 export function augmentComponent<
     P,
     C extends React.ComponentClass<P>,
@@ -132,15 +142,17 @@ export function augmentComponent<
 
 let layerIndex = 1;
 
-/// Creates a decorator for a component that will render a layer into a detached
-/// DOM node. This is useful for creating things outside of the normal React
-/// hierarchy, such as modals and popovers. This function accepts an `options`
-/// object. Currently, the only option is `idPrefix`, which specifies a prefix
-/// for the unique ID of the detached nodes.
-///
-/// The returned decorator can only be applied to a React component that has a
-/// `renderLayer()` method, which should return the React element to render into
-/// the detached DOM node.
+/*
+* Creates a decorator for a component that will render a layer into a detached
+* DOM node. This is useful for creating things outside of the normal React
+* hierarchy, such as modals and popovers. This function accepts an `options`
+* object. Currently, the only option is `idPrefix`, which specifies a prefix
+* for the unique ID of the detached nodes.
+*
+* The returned decorator can only be applied to a React component that has a
+* `renderLayer()` method, which should return the React element to render into
+* the detached DOM node.
+*/
 export interface LayerRenderable {
     new(...args: any[]): LayerRenderableInstance;
 }
