@@ -4,7 +4,8 @@
   "description": "A set of utilities for React projects.",
   "main": "lib/index.js",
   "scripts": {
-    "prepublish": "npm run test && tsc",
+    "prepublish": "npm run clean && npm run test && tsc",
+    "clean": "rimraf lib",
     "test": "NODE_ENV=development nyc ./node_modules/mocha/bin/mocha -r ts-node/register src/__tests__/**/*.test.{ts,js,tsx,jsx}"
   },
   "repository": {
